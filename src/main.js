@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import { store } from './store/store'
+import { store } from './store'
 import VueRouter from 'vue-router'
 import Sidebar from './components/Sidebar.vue';
 import Home from './components/Home.vue';

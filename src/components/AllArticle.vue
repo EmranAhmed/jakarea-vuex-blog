@@ -1,5 +1,6 @@
 <template>
   <div class="col-sm-8 col-xs-12">
+    {{ posts }}
         <div class="blog-box" v-for="post in posts">
             <div class="resume-box blog-post">
                 <h4><router-link :to="'/posts/'+ post.id"><a >{{ post.title }}</a></router-link></h4>
@@ -12,7 +13,7 @@
                         <div class="info-title"><i class="fa fa-tags"></i></div>
                         <div class="value"><a href="#">Code</a></div>
                     </div>
-                    <p>{{ post.body}}
+                    <p>{{ post.body}}</p>
                     <div class="blog-action">
                         <router-link :to="'/posts/'+ post.id"><a class="m-btn pull-right">Read More</a></router-link>
                     </div>
@@ -26,11 +27,11 @@
 export default {
 computed: {
   posts(){
-      return this.$store.state.posts;
-  },
+        this.$store.dispatch('posts');
+  }
 },
 created() {
-  return this.$store.commit('load_blog_posts');
+  //return this.$store('load_blog_posts');
   }
 }
 </script>
