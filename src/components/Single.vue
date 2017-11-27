@@ -1,9 +1,8 @@
 <template>
-  <div>
     <div class="col-sm-8 col-xs-12">
           <div class="blog-box">
               <div class="resume-box blog-post">
-                  <h4><a href="">{{ post.title }}</a></h4>
+                  <h4><router-link :to="'/'">{{ post.title }}</router-link></h4>
                   <div class="resume-row">
                       <div class="info">
                           <div class="info-title"><i class="fa fa-folder-o"></i></div>
@@ -18,29 +17,31 @@
               </div>
           </div>
       </div>
-    <Sidebar/>
+    
   </div>
 </template>
 
 <script>
-import Sidebar from './Sidebar.vue';
-
+import {mapGetters, mapActions} from 'vuex'
 export default {
   data(){
-    return  {
-          post : ''
+    return {
+         id: this.$route.params.id
         }
-      },
-  components: {
-    'Sidebar' : Sidebar
   },
-  created: function(){
-    var postId = this.$route.params.postId;
-    this.$store.state.posts.forEach( post=>{
-        if(post.id == postId){
-          this.post = post;
-        }
-    });
+
+  computed:{
+    ...mapGetters(['getPost', 'getPostById']),
+    post(){
+      return this.getPostById(this.id) || this.getPost
+    }
+  },
+
+  methods:{
+    ...mapActions(['fetchPost'])
+  },
+  created(){
+    this.fetchPost(this.id)
   }
 }
 </script>

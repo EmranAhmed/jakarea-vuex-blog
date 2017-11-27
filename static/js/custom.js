@@ -1,4 +1,4 @@
 
-	$(window).load(function() {
-	   document.getElementById("loading").style.display = "none";
-	});
+$(window).load(function () {
+	document.getElementById("loading").style.display="none";
+});

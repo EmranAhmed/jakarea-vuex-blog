@@ -1,18 +1,13 @@
-<template>
-<div >
-  <AllArticle/>
-  <Sidebar/>
-</div>
-</template>
-
 <script>
-import AllArticle from './AllArticle.vue';
-import Sidebar from './Sidebar.vue';
+// Example Dynamic Loading
+const AllArticle = () => import(/* webpackChunkName: "posts" */ './AllArticle.vue')
 
 export default {
+  // template: '<AllArticle/>', // template mode
+  // render: (h) => (<AllArticle/>), // JSX Mode
+  render: (h) =>  h(AllArticle), // createElement or functional mode
   components: {
-    'AllArticle' : AllArticle,
-    'Sidebar' : Sidebar
+    AllArticle
   }
 }
 </script>

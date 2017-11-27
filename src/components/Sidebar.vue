@@ -1,4 +1,3 @@
-
 <template>
  <div class="col-sm-4 col-xs-12">
         <div class="resume-box blog-post search-box">
@@ -73,12 +72,3 @@
         </div>
     </div>
 </template>
-
-
-<script>
-    
-</script>
-
-
-<style >
-</style>

@@ -1,9 +1,8 @@
 <template>
   <div class="col-sm-8 col-xs-12">
-    {{ posts }}
-        <div class="blog-box" v-for="post in posts">
+        <div class="blog-box" v-for="post in posts" :key="post.id">
             <div class="resume-box blog-post">
-                <h4><router-link :to="'/posts/'+ post.id"><a >{{ post.title }}</a></router-link></h4>
+                <h4><router-link :to="'/posts/'+ post.id">{{ post.title }}</router-link></h4>
                 <div class="resume-row">
                     <div class="info">
                         <div class="info-title"><i class="fa fa-folder-o"></i></div>
@@ -24,18 +23,19 @@
 </template>
 
 <script>
+import {mapGetters, mapActions} from 'vuex'
 export default {
 computed: {
+    ...mapGetters(['getPosts']),
   posts(){
-        this.$store.dispatch('posts');
-  }
+        return this.getPosts;
+  },
+},
+methods:{
+    ...mapActions(['fetchPosts'])
 },
 created() {
-  //return this.$store('load_blog_posts');
+    this.fetchPosts()
   }
 }
 </script>
-
-
-<style >
-</style>

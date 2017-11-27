@@ -1,22 +1,6 @@
 <template>
-  <div id="app">
-      <router-view ></router-view>
+  <div class="row">
+      <router-view class="primary"></router-view>
+      <router-view class="aside" name="sidebar"></router-view>
   </div>
 </template>
-
-<script>
-
-export default {
-  components: {
-
-  },
-  name: 'app',
-  data () {
-    return {
-    }
-  }
-}
-</script>
-
-<style>
-</style>
